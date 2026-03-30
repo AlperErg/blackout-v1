@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join session – Blackout</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; text-align: center; }
+    a { color: #0a84ff; }
+  </style>
+</head>
+<body>
+  <p id="msg">Opening Blackout app…</p>
+  <p id="fallback" style="display:none;">
+    <a href="#" id="openApp">Open in Blackout app</a>
+  </p>
+  <script>
+    (function () {
+      var sessionId = '';
+      var pathParts = location.pathname.split('/').filter(Boolean);
+      if (pathParts[0] === 'join' && pathParts[1]) {
+        sessionId = pathParts[1];
+      }
+      if (!sessionId) {
+        sessionId = (new URLSearchParams(location.search)).get('sessionId') || '';
+      }
+      if (!sessionId) {
+        document.getElementById('msg').textContent = 'Invalid join link.';
+        return;
+      }
+      var appUrl = 'blackout://join/' + encodeURIComponent(sessionId);
+      document.getElementById('openApp').href = appUrl;
+      window.location.replace(appUrl);
+      setTimeout(function () {
+        document.getElementById('msg').textContent = 'If the app didn’t open, tap below:';
+        document.getElementById('msg').style.display = 'block';
+        document.getElementById('fallback').style.display = 'block';
+      }, 1500);
+    })();
+  </script>
+</body>
+</html>

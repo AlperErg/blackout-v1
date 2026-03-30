@@ -1,0 +1,31 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+    tools:ignore="ProtectedPermissions"
+    xmlns:tools="http://schemas.android.com/tools" />
+
+  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+  <application>
+    <service
+      android:name="expo.modules.androidblocker.BlockingService"
+      android:exported="false"
+      android:foregroundServiceType="specialUse">
+      <property
+        android:name="android.app.PROPERTY_SPECIAL_USE_FGS_DESCRIPTION"
+        android:value="Blackout uses this service to block access to other apps during a phone-free session." />
+    </service>
+
+    <activity
+      android:name="expo.modules.androidblocker.BlockingOverlayActivity"
+      android:theme="@style/BlockingOverlayTheme"
+      android:excludeFromRecents="true"
+      android:taskAffinity=""
+      android:launchMode="singleInstance"
+      android:exported="false" />
+  </application>
+
+</manifest>

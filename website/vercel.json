@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/join/:sessionId", "destination": "/join.html" }
+  ]
+}

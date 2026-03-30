@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple"],
+  "apple": {
+    "swiftModuleName": "ExpoFamilyControls",
+    "modules": ["ExpoFamilyControlsModule"],
+    "appDelegateSubscribers": ["ExpoFamilyControlsAppDelegateSubscriber"],
+    "podspecPath": "ios/ExpoFamilyControls.podspec"
+  }
+}

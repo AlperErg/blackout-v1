@@ -1,0 +1,22 @@
+{
+  "name": "expo-android-blocker",
+  "version": "1.0.0",
+  "description": "App blocking for Android during Blackout sessions using UsageStats + overlay",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "expo": {
+    "plugin": "./app.plugin.js"
+  },
+  "scripts": {
+    "build": "expo-module build"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "expo-modules-core": "*",
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "^5.0.8"
+  }
+}
